@@ -81,7 +81,7 @@ export default function ShippingAddressScreen({ route, navigation }) {
                   style={styles.input}
                   value={ville}
                   onChangeText={setVille}
-                  placeholder="Ex: Paris"
+                  placeholder="Ex: Rabat"
                   placeholderTextColor="#aaa"
                 />
               </View>
@@ -95,7 +95,7 @@ export default function ShippingAddressScreen({ route, navigation }) {
                   style={styles.input}
                   value={avenue}
                   onChangeText={setAvenue}
-                  placeholder="Ex: 123 Avenue des Champs-Élysées"
+                  placeholder="Ex: Av Zaraktouni"
                   placeholderTextColor="#aaa"
                 />
               </View>
@@ -109,7 +109,7 @@ export default function ShippingAddressScreen({ route, navigation }) {
                   style={styles.input}
                   value={telephone}
                   onChangeText={setTelephone}
-                  placeholder="Ex: +33 6 12 34 56 78"
+                  placeholder="Ex: +212 06 12 34 56 78"
                   placeholderTextColor="#aaa"
                   keyboardType="phone-pad"
                 />
@@ -117,9 +117,9 @@ export default function ShippingAddressScreen({ route, navigation }) {
             </View>
           </View>
 
-          <TouchableOpacity 
-            style={styles.saveBtn} 
-            onPress={handleSave} 
+          <TouchableOpacity
+            style={styles.saveBtn}
+            onPress={handleSave}
             disabled={saving}
           >
             {saving ? (

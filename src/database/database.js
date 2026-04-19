@@ -1,6 +1,6 @@
 import * as SQLite from 'expo-sqlite';
 
-const dbName = 'boutique.db';
+const dbName = 'quickbuy.db';
 
 export const initDB = async () => {
   try {

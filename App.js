@@ -15,6 +15,10 @@ import ProfileScreen from './src/screens/profile/ProfileScreen';
 import ShippingAddressScreen from './src/screens/profile/ShippingAddressScreen';
 import EditProfileScreen from './src/screens/profile/EditProfileScreen';
 
+// Import Onboarding Screens
+import SplashScreen from './src/screens/onboarding/SplashScreen';
+import OnboardingScreen from './src/screens/onboarding/OnboardingScreen';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -44,9 +48,11 @@ export default function App() {
     <NavigationContainer>
       <StatusBar style="auto" />
       <Stack.Navigator
-        initialRouteName="SignIn"
+        initialRouteName="Splash"
         screenOptions={{ headerShown: false }}
       >
+        <Stack.Screen name="Splash" component={SplashScreen} />
+        <Stack.Screen name="Onboarding" component={OnboardingScreen} />
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="MailVerification" component={MailVerificationScreen} />

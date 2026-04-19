@@ -33,7 +33,7 @@ export default function SignUpScreen({ navigation }) {
           </TouchableOpacity>
 
           <View style={styles.header}>
-            <Text style={styles.logoText}>BOUTIQUE</Text>
+            <Text style={styles.logoText}>QUICKBUY</Text>
             <Text style={styles.title}>Create Account</Text>
             <Text style={styles.subtitle}>Please fill in your details and shipping info</Text>
           </View>

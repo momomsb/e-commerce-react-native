@@ -49,7 +49,7 @@ export default function ProfileScreen({ route, navigation }) {
               {user?.name ? user.name.charAt(0).toUpperCase() : 'B'}
             </Text>
           </View>
-          <Text style={styles.userName}>{user ? user.name : 'Boutique User'}</Text>
+          <Text style={styles.userName}>{user ? user.name : 'QuickBuy User'}</Text>
           <Text style={styles.userEmail}>{user ? user.email : 'Explore the best products'}</Text>
           
           <TouchableOpacity style={styles.editProfileBtn} onPress={() => navigation.navigate('EditProfile', { userId })}>
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
     borderRadius: 45,
-    backgroundColor: '#000', // Matches the Boutique black theme
+    backgroundColor: '#000', // Matches the QuickBuy black theme
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 16,

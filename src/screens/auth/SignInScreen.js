@@ -25,7 +25,7 @@ export default function SignInScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.inner}>
         <View style={styles.header}>
-          <Text style={styles.logoText}>BOUTIQUE</Text>
+          <Text style={styles.logoText}>QUICKBUY</Text>
           <Text style={styles.title}>Welcome to Login</Text>
           <Text style={styles.subtitle}>Please enter below details to sign in to your account</Text>
         </View>
