@@ -52,34 +52,17 @@ export default function ProfileScreen({ route, navigation }) {
           <Text style={styles.userName}>{user ? user.name : 'QuickBuy User'}</Text>
           <Text style={styles.userEmail}>{user ? user.email : 'Explore the best products'}</Text>
           
-          <TouchableOpacity style={styles.editProfileBtn} onPress={() => navigation.navigate('EditProfile', { userId })}>
-            <Text style={styles.editProfileBtnText}>Edit Profile</Text>
-          </TouchableOpacity>
+          <View style={styles.addressBadge}>
+            <Ionicons name="location" size={14} color="#666" style={{ marginRight: 4 }} />
+            <Text style={styles.addressBadgeText}>
+              {user?.ville ? `${user.ville}${user.avenue ? `, ${user.avenue}` : ''}` : 'Adresse non renseignée'}
+            </Text>
+          </View>
         </View>
 
         {/* Options List */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Dashboard</Text>
-
-          <TouchableOpacity style={styles.menuItem}>
-            <View style={styles.menuItemLeft}>
-              <View style={[styles.iconBox, { backgroundColor: '#e3f2fd' }]}>
-                 <Ionicons name="cart-outline" size={20} color="#1e88e5" />
-              </View>
-              <Text style={styles.menuItemText}>My Orders</Text>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color="#ccc" />
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.menuItem}>
-            <View style={styles.menuItemLeft}>
-              <View style={[styles.iconBox, { backgroundColor: '#fbe9e7' }]}>
-                 <Ionicons name="heart-outline" size={20} color="#e53935" />
-              </View>
-              <Text style={styles.menuItemText}>Wishlist</Text>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color="#ccc" />
-          </TouchableOpacity>
 
           <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('ShippingAddress', { userId })}>
             <View style={styles.menuItemLeft}>
@@ -182,16 +165,18 @@ const styles = StyleSheet.create({
     color: '#777',
     marginBottom: 20,
   },
-  editProfileBtn: {
-    backgroundColor: '#000',
-    paddingVertical: 10,
-    paddingHorizontal: 24,
-    borderRadius: 30,
+  addressBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F5F5F5',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 20,
   },
-  editProfileBtnText: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: '600',
+  addressBadgeText: {
+    color: '#555',
+    fontSize: 13,
+    fontWeight: '500',
   },
   section: {
     backgroundColor: '#fff',
