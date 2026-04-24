@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, ScrollView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import { registerUser } from '../database/database';
 
 export default function SignUpScreen({ navigation }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [ville, setVille] = useState('');
   const [avenue, setAvenue] = useState('');
   const [telephone, setTelephone] = useState('');
@@ -68,10 +70,20 @@ export default function SignUpScreen({ navigation }) {
                 style={styles.input}
                 placeholder="Password"
                 placeholderTextColor="#888"
-                secureTextEntry
+                secureTextEntry={!showPassword}
                 value={password}
                 onChangeText={setPassword}
               />
+              <TouchableOpacity 
+                onPress={() => setShowPassword(!showPassword)}
+                style={styles.iconContainer}
+              >
+                <Ionicons 
+                  name={showPassword ? 'eye-off' : 'eye'} 
+                  size={24} 
+                  color="#888" 
+                />
+              </TouchableOpacity>
             </View>
 
             <Text style={styles.sectionHeader}>Shipping Address</Text>
@@ -137,8 +149,9 @@ const styles = StyleSheet.create({
   subtitle: { fontSize: 14, color: '#666', textAlign: 'center' },
   form: { marginTop: 20 },
   sectionHeader: { fontSize: 16, fontWeight: '600', color: '#000', marginBottom: 10, marginTop: 10 },
-  inputContainer: { borderWidth: 1, borderColor: '#e0e0e0', borderRadius: 8, marginBottom: 14, height: 50 },
+  inputContainer: { borderWidth: 1, borderColor: '#e0e0e0', borderRadius: 8, marginBottom: 14, height: 50, flexDirection: 'row', alignItems: 'center' },
   input: { flex: 1, paddingHorizontal: 16, fontSize: 14, color: '#000' },
+  iconContainer: { padding: 10 },
   signUpBtn: { backgroundColor: '#000', height: 50, borderRadius: 8, justifyContent: 'center', alignItems: 'center', marginTop: 10 },
   signUpBtnText: { color: '#fff', fontSize: 16, fontWeight: '600' },
   footer: { marginTop: 30, alignItems: 'center' },

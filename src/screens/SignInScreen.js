@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import { loginUser } from '../database/database';
 
 export default function SignInScreen({ navigation, onLoginSuccess }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSignIn = async () => {
     if (!email || !password) {
@@ -49,10 +51,20 @@ export default function SignInScreen({ navigation, onLoginSuccess }) {
               style={styles.input}
               placeholder="Enter your password"
               placeholderTextColor="#888"
-              secureTextEntry
+              secureTextEntry={!showPassword}
               value={password}
               onChangeText={setPassword}
             />
+            <TouchableOpacity 
+              onPress={() => setShowPassword(!showPassword)}
+              style={styles.iconContainer}
+            >
+              <Ionicons 
+                name={showPassword ? 'eye-off' : 'eye'} 
+                size={24} 
+                color="#888" 
+              />
+            </TouchableOpacity>
           </View>
 
           <TouchableOpacity style={styles.forgotPassword}>
@@ -73,7 +85,7 @@ export default function SignInScreen({ navigation, onLoginSuccess }) {
 
           <View style={styles.socialButtonsContainer}>
             <TouchableOpacity style={[styles.socialBtn, styles.googleBtn]}>
-              <Text style={styles.googleBtnText}>G Google</Text>
+              <Text style={styles.googleBtnText}>Google</Text>
             </TouchableOpacity>
           </View>
 
@@ -137,12 +149,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 16,
     height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   input: {
     flex: 1,
     paddingHorizontal: 16,
     fontSize: 14,
     color: '#000',
+  },
+  iconContainer: {
+    padding: 10,
   },
   forgotPassword: {
     alignSelf: 'flex-start',
