@@ -71,7 +71,10 @@ export const registerUser = async (name, email, password, ville, avenue, telepho
     return { success: true, insertId: result.lastInsertRowId };
   } catch (error) {
     console.error('Error registering user:', error);
-    return { success: false, error: error.message };
+    if (error.message && error.message.includes('UNIQUE constraint failed: users.email')) {
+      return { success: false, error: 'Cet email est déjà utilisé. Veuillez en choisir un autre.' };
+    }
+    return { success: false, error: 'Une erreur est survenue lors de l\'inscription. Veuillez réessayer.' };
   }
 };
 
